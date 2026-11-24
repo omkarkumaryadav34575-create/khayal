@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/* Mascot interactive & expressive animations */
+@keyframes mascotFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1.5deg); }
+}
+
+@keyframes mascotSpeaking {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.03); }
+}
+
+@keyframes mascotListening {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.04) rotate(-2deg); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.18); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.18); }
+  70% { transform: scale(1); }
+}
+
+.mascot-animate,
+.mascot-float {
+  animation: mascotFloat 4s ease-in-out infinite;
+}
+
+.mascot-speaking {
+  animation: mascotSpeaking 1.2s ease-in-out infinite;
+}
+
+.mascot-listening {
+  animation: mascotListening 1.8s ease-in-out infinite;
+}
+
+.mascot-heart {
+  animation: heartBeat 2.5s ease-in-out infinite;
+}
+
+@theme {
+  --color-brand: #0F766E;
+  --color-brand-dark: #115E59;
+  --color-brand-soft: #CCFBF1;
+  --color-cream: #FFFBF5;
+  --color-ink: #1E293B;
+  --color-muted: #475569;
+  --color-accent: #F97316;
+  --color-line: #E7E5E4;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Orb container */
+.orb {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 9999px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+}
+
+.orb-speaking {
+  background: var(--color-brand-soft);
+  animation: pulse-teal 1.6s ease-out infinite;
+}
+
+.orb-listening {
+  background: #FFEDD5;
+  animation: pulse-coral 1.2s ease-out infinite;
+}
+
+@keyframes pulse-teal {
+  0% { box-shadow: 0 0 0 0 rgba(15, 118, 110, 0.5); }
+  100% { box-shadow: 0 0 0 45px rgba(15, 118, 110, 0); }
+}
+
+@keyframes pulse-coral {
+  0% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.55); }
+  100% { box-shadow: 0 0 0 45px rgba(249, 115, 22, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orb-speaking, .orb-listening, .mascot-float, .mascot-speaking, .mascot-listening, .mascot-heart, .mascot-animate {
+    animation: none;
+  }
+}
